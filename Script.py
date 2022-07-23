@@ -4,44 +4,44 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# def save_data(name, weight, cpu_brand, cpu_type, ram, storage, storage_type, gpu_brand, gpu_size, screen_size, price):
-#     try:
-#         cnx = mysql.connector.connect(user='root', host='127.0.0.1', database='pricecalc')
-#         cursor = cnx.cursor()
-#         query = "INSERT INTO laptops (name, weight, cpu_brand, cpu_type, ram, storage, storage_type, gpu_brand, " \
-#                 "gpu_size, screen_size, price) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-#         val = (name, weight, cpu_brand, cpu_type, ram, storage, storage_type, gpu_brand, gpu_size, screen_size, price)
-#         cursor.execute(query, val)
-#         cnx.commit()
-#         cnx.close()
-#         print("\033[92mDONE\033[0m")
-#     except mysql.connector.Error as err:
-#         print("Error acquired maybe duplicated item. Error is: ", err)
+def save_data(name, weight, cpu_brand, cpu_type, ram, storage, storage_type, gpu_brand, gpu_size, screen_size, price):
+    try:
+        cnx = mysql.connector.connect(user='root', host='127.0.0.1', database='pricecalc')
+        cursor = cnx.cursor()
+        query = "INSERT INTO laptops (name, weight, cpu_brand, cpu_type, ram, storage, storage_type, gpu_brand, " \
+                "gpu_size, screen_size, price) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (name, weight, cpu_brand, cpu_type, ram, storage, storage_type, gpu_brand, gpu_size, screen_size, price)
+        cursor.execute(query, val)
+        cnx.commit()
+        cnx.close()
+        print("\033[92mDONE\033[0m")
+    except mysql.connector.Error as err:
+        print("Error acquired maybe duplicated item. Error is: ", err)
 
 
-# def start_data():
-#     try:
-#         cnx = mysql.connector.connect(user='root', host='127.0.0.1')
-#         cursor = cnx.cursor()
-#         query = "CREATE DATABASE IF NOT EXISTS pricecalc;"
-#         cursor.execute(query)
-#         cnx.commit()
-#         cnx.close()
-#
-#         cnx = mysql.connector.connect(user='root', host='127.0.0.1', database='pricecalc')
-#         cursor = cnx.cursor()
-#         query = "CREATE TABLE IF NOT EXISTS laptops
-#         (name nvarchar(200) primary key, weight float, cpu_brand float, " \
-#                 "cpu_type float,ram float, storage float, storage_type float, gpu_brand float, gpu_size float, " \
-#                 "screen_size float, price float)"
-#         cursor.execute(query)
-#         cnx.commit()
-#         cnx.close()
-#     except mysql.connector.Error as err:
-#         print(err)
+def start_data():
+    try:
+        cnx = mysql.connector.connect(user='root', host='127.0.0.1')
+        cursor = cnx.cursor()
+        query = "CREATE DATABASE IF NOT EXISTS pricecalc;"
+        cursor.execute(query)
+        cnx.commit()
+        cnx.close()
+
+        cnx = mysql.connector.connect(user='root', host='127.0.0.1', database='pricecalc')
+        cursor = cnx.cursor()
+        query = "CREATE TABLE IF NOT EXISTS laptops
+        (name nvarchar(200) primary key, weight float, cpu_brand float, " \
+                "cpu_type float,ram float, storage float, storage_type float, gpu_brand float, gpu_size float, " \
+                "screen_size float, price float)"
+        cursor.execute(query)
+        cnx.commit()
+        cnx.close()
+    except mysql.connector.Error as err:
+        print(err)
 
 
-# start_data()
+start_data()
 
 for i in range(6):
     req_add_page = i + 1
